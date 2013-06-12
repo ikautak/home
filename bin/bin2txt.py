@@ -1,14 +1,16 @@
 #!/usr/bin/env python
 
 import sys
+import binascii
 
 
 def bin2txt(file_name):
-    b = open(file_name, 'rb').read()
-    for i, t in enumerate(map(ord, b)):
+    a = map(binascii.b2a_hex, open(file_name, 'rb').read())
+    for i, t in enumerate(a):
         if i % 16 == 0 and i != 0:
+            # line feed
             print('')
-        print('%02x' % t),
+        print(t),
     print('')
 
 

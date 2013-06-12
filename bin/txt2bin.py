@@ -1,15 +1,14 @@
 #!/usr/bin/env python
 
 import sys
-import struct
+import binascii
 
 
 def txt2bin(file_name):
-    d = [int(x, 16) for x in open(file_name, 'r').read().rstrip().split()]
+    d = map(binascii.a2b_hex, open(file_name, 'r').read().rstrip().split())
 
-    o = file(file_name + '.bin', 'wb')
-    for c in d:
-        o.write(struct.pack('B', c))
+    o = open(file_name + '.bin', 'wb')
+    o.write(''.join(d))
     o.close()
 
 
