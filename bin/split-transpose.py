@@ -1,25 +1,28 @@
 #!/usr/bin/env python
 
 import sys
+import argparse
 
-def split_transpose(n):
-    line = ''
-    count = 0
+
+def split_transpose(split_lines, delimiter):
+    d = []
 
     for l in iter(sys.stdin.readline, ''):
-        line += l.rstrip() + '\t'
-        count += 1
+        d.append(l.rstrip())
 
-        if count == n:
-            print(line)
-            line = ''
-            count = 0
+        if len(d) == split_lines:
+            print(delimiter.join(d))
+            d = []
 
-    if count != 0:
-        print(line)
+    if len(d) > 0:
+        print(delimiter.join(d))
 
 
 if __name__ == '__main__':
-    if len(sys.argv) > 1:
-        split_transpose(int(sys.argv[1]))
+    parser = argparse.ArgumentParser(description='split & transpose stdin')
+    parser.add_argument('-l', '--lines', type=int, default=1, help='split lines')
+    parser.add_argument('-d', '--delimiter', default='\t', help='delimiter char')
+    args = parser.parse_args()
 
+    if args.lines > 0:
+        split_transpose(args.lines, args.delimiter)
