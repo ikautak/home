@@ -1,0 +1,7 @@
+[alias]
+    st = status
+    cm = commit
+    diffs = diff --cached
+    br = branch
+    lg = log --graph --pretty=format:'%Cred%h%Creset - %s%C(yellow)%d%Creset %Cgreen(%cr:%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=iso
+    lga = !"git lg --all"
