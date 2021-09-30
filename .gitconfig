@@ -1,7 +1,14 @@
+[core]
+    editor = vim
 [alias]
     st = status
+    co = checkout
     cm = commit
-    diffs = diff --cached
     br = branch
+    sw = switch
+    rs = restore
+    gr = grep -n
+    difff = diff --name-only
+    diffs = diff --cached
     lg = log --graph --pretty=format:'%Cred%h%Creset - %s%C(yellow)%d%Creset %Cgreen(%cr:%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=iso
     lga = !"git lg --all"
