@@ -1,0 +1,6 @@
+#!/bin/bash
+
+diff --exclude=*.pyc \
+    --exclude=.git \
+    -ur $1 $2 | diffstat
+
